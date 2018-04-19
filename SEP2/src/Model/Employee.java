@@ -8,8 +8,9 @@ public class Employee {
 	private String Email;
 	private String phoneNr;
 	private String DefoultTaxCard;
+	private Date DOB;
 	
-	public Employee(String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard)
+	public Employee(String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard, Date dob)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -18,6 +19,7 @@ public class Employee {
 		this.Email = Email;
 		this.phoneNr = phoneNR;
 		this.DefoultTaxCard = DefoultTaxCard;
+		this.DOB = dob;
 	}
 	
 	public void setFirstName(String name)
@@ -55,6 +57,11 @@ public class Employee {
 		this.DefoultTaxCard = DefoultTaxCard;
 	}
 	
+	public void setDOB(Date dob)
+	{
+		this.DOB = dob;
+	}
+	
 	public String getFirstName()
 	{
 		return firstName;
@@ -88,6 +95,11 @@ public class Employee {
 	public String getDefoultTaxCard()
 	{
 		return DefoultTaxCard;
+	}
+	
+	public Date getDOB()
+	{
+		return DOB;
 	}
 	
 }
