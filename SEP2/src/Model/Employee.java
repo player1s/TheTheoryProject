@@ -1,6 +1,7 @@
 package Model;
 
 public class Employee {
+	private String memberID;
 	private String firstName;
 	private String lastName;
 	private String adress;
@@ -10,8 +11,9 @@ public class Employee {
 	private String DefoultTaxCard;
 	private Date DOB;
 	
-	public Employee(String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard, Date dob)
+	public Employee(String memberID, String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard, Date dob)
 	{
+		this.memberID = memberID;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.adress = adress;
@@ -20,6 +22,11 @@ public class Employee {
 		this.phoneNr = phoneNR;
 		this.DefoultTaxCard = DefoultTaxCard;
 		this.DOB = dob;
+	}
+	
+	public void setMemberId(String memberID)
+	{
+		this.memberID = memberID;
 	}
 	
 	public void setFirstName(String name)
@@ -60,6 +67,11 @@ public class Employee {
 	public void setDOB(Date dob)
 	{
 		this.DOB = dob;
+	}
+	
+	public String getMemberID()
+	{
+		return memberID;
 	}
 	
 	public String getFirstName()
