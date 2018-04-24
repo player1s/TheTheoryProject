@@ -1,9 +1,11 @@
 package Mediator;
 
 import java.sql.SQLException;
-
 import Model.Employee;
 import Model.Payment;
+import Model.PaymentList;
+import Model.EmployeeList;
+
 import utility.persistence.MyDatabase;
 
 public class Database implements Persistence{
@@ -43,5 +45,26 @@ public class Database implements Persistence{
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public synchronized void saveEmployeeList(EmployeeList eList)
+	{
+		for(int i = 0; i < eList.getNumberOfEmployees(); i++)
+		{
+			saveEmployee(eList.getEmployee(i));
+		}
+	}
+	
+	@Override
+	public synchronized void savePaymentList(PaymentList pList)
+	{
+		for(int i = 0; i < pList.getNumberOfPayments(); i++)
+		{
+			savePayment(pList.getPayment(i));
+		}
+	}
+	
+	
+
  
 }

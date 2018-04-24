@@ -14,6 +14,14 @@ public class PaymentList {
 	{
 		list.add(paym);
 	}
+	
+	public int getNumberOfPayments() {
+		return list.size();
+	}
+	
+	public Payment getPayment(int index) {
+		return list.get(index);
+	}
 }
 
 
