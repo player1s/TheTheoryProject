@@ -3,6 +3,7 @@ package Mediator;
 import java.sql.SQLException;
 
 import Model.Employee;
+import Model.Payment;
 import utility.persistence.MyDatabase;
 
 public class Database implements Persistence{
@@ -23,6 +24,17 @@ public class Database implements Persistence{
 	@Override
 	public synchronized void saveEmployee(Employee emp) {
 		String sql = "insert into" + " employeedb.employee" + " values('" + emp.getMemberID() + "'," + "'" + emp.getFirstName() + "'," + "'" + emp.getLastName() + "'," + "'" + emp.getAdress() + "'," + "'" + emp.getCPRnumber() + "'," + "'" + emp.getEmail() + "'," + "'" + emp.getPhoneNr() + "'," + "'" + emp.getDefoultTaxCard() + "'," + "'" + emp.getDOB() + "');"; 
+		try {
+			System.out.println(sql);
+			db.update(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public synchronized void savePayment(Payment paym) {
+		String sql = "insert into" + " employeedb.payment" + " values('" + paym.getPaymentID() + "'," + "'" + paym.getGrossSalary() + "'," + "'" + paym.getHoursWorked() + "'," + "'" + paym.getNetSalary() + "'," + "'" + paym.getHolidayPay() + "');"; 
 		try {
 			System.out.println(sql);
 			db.update(sql);
