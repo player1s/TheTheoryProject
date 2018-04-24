@@ -1,8 +1,8 @@
 package Mediator;
 
 import java.sql.SQLException;
-
 import Model.Employee;
+import Model.EmployeeList;
 import utility.persistence.MyDatabase;
 
 public class Database implements Persistence{
@@ -31,5 +31,15 @@ public class Database implements Persistence{
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	public synchronized void saveEmployeeList(EmployeeList eList)
+	{
+		for(int i = 0; i < eList.getNumberOfEmployees(); i++)
+		{
+			saveEmployee(eList.getEmployee(i));
+		}
+	}
+	
  
 }

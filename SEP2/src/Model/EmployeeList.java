@@ -13,4 +13,14 @@ public class EmployeeList {
 	{
 		list.add(emp);
 	}
+	
+	public int getNumberOfEmployees()
+	{
+		return list.size();
+	}
+	
+	public Employee getEmployee(int index)
+	{
+		return list.get(index);
+	}
 }
