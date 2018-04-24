@@ -16,6 +16,7 @@ public class HelloWorld {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("DEIVI VEIKIA NX");
 		database.saveEmployee(emp);
 	}
 }
