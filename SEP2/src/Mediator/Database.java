@@ -29,7 +29,6 @@ public class Database implements Persistence{
 	public synchronized void saveEmployee(Employee emp) {
 		String sql = "insert into" + " risetheorydb.employee" + " values('" + emp.getEmployeeID() + "'," + "'" + emp.getFirstName() + "'," + "'" + emp.getLastName() + "'," + "'" + emp.getAdress() + "'," + "'" + emp.getCPRnumber() + "'," + "'" + emp.getEmail() + "'," + "'" + emp.getPhoneNr() + "'," + "'" + emp.getDefoultTaxCard() + "'," + "'" + emp.getDOB() + "');"; 
 		try {
-			System.out.println(sql);
 			db.update(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -41,7 +40,6 @@ public class Database implements Persistence{
 	public synchronized void savePayment(Payment paym) {
 		String sql = "insert into" + " risetheorydb.payment" + " values('" + paym.getPaymentID() + "'," + "'" + paym.getGrossSalary() + "'," + "'" + paym.getHoursWorked() + "'," + "'" + paym.getNetSalary() + "'," + "'" + paym.getHolidayPay() + "');"; 
 		try {
-			System.out.println(sql);
 			db.update(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -53,7 +51,6 @@ public class Database implements Persistence{
 	public synchronized void saveProject(Project proj) {
 		String sql = "insert into" + " risetheorydb.project" + " values('" + proj.getProjectID() + "'," + "'" + proj.getIsCompleted() + "'," + "'" + proj.getIsSomeoneWorkingOn() + "'," + "'" + proj.getCaseType() + "'," + "'" + proj.getDeadLine() + "'," + "'" + proj.getPaymentOfProject() + "'," + "'" + proj.getMilestone() + "'," + "'" + proj.getNameOfContractor() + "'," + "'" + proj.getSite() + "'," + "'" + proj.getWinningProposal() + "'," + "'" + proj.getStartDate() + "'," + "'" + proj.getEndDate()+ "');"; 
 		try {
-			System.out.println(sql);
 			db.update(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
