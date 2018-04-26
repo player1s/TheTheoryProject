@@ -15,7 +15,7 @@ public class Project {
 	private Date startDate;
 	private Date endDate;
 	
-	private Project(int projectID, boolean isCompleted, boolean isSomeoneWorkingOn, int caseType, Date deadline, int paymentOfProject, int milestone, String nameOfContractor, String site, String winningProposal, Date startDate, Date endDate) {
+	public Project(int projectID, boolean isCompleted, boolean isSomeoneWorkingOn, int caseType, Date deadline, int paymentOfProject, int milestone, String nameOfContractor, String site, String winningProposal, Date startDate, Date endDate) {
 		this.projectID = projectID;
 		this.isCompleted = isCompleted;
 		this.isSomeoneWorkingOn = isSomeoneWorkingOn;
@@ -38,7 +38,7 @@ public class Project {
 		this.projectID = projectID;
 	}
 	
-	public boolean getSsCompleted() {
+	public boolean getIsCompleted() {
 		return isCompleted;
 	}
 	

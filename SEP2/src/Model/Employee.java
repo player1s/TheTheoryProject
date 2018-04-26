@@ -1,7 +1,7 @@
 package Model;
 
 public class Employee {
-	private String memberID;
+	private String employeeID;
 	private String firstName;
 	private String lastName;
 	private String adress;
@@ -11,9 +11,9 @@ public class Employee {
 	private String DefoultTaxCard;
 	private Date DOB;
 	
-	public Employee(String memberID, String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard, Date dob)
+	public Employee(String employeeID, String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard, Date dob)
 	{
-		this.memberID = memberID;
+		this.employeeID = employeeID;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.adress = adress;
@@ -24,9 +24,9 @@ public class Employee {
 		this.DOB = dob;
 	}
 	
-	public void setMemberId(String memberID)
+	public void setEmployeeId(String employeeID)
 	{
-		this.memberID = memberID;
+		this.employeeID = employeeID;
 	}
 	
 	public void setFirstName(String name)
@@ -69,9 +69,9 @@ public class Employee {
 		this.DOB = dob;
 	}
 	
-	public String getMemberID()
+	public String getEmployeeID()
 	{
-		return memberID;
+		return employeeID;
 	}
 	
 	public String getFirstName()

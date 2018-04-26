@@ -9,15 +9,15 @@ public class ProjectList {
 		this.list = new ArrayList<>();
 	}
 	
-	public void addProjet(Project project) {
-		list.add(project);
+	public void addProjet(Project proj) {
+		list.add(proj);
 	}
 	
 	public int getNumberOfProject() {
 		return list.size();
 	}
 	
-	public Project getProjet(int index) {
+	public Project getProject(int index) {
 		return list.get(index);
 	}
 }
