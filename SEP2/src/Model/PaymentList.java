@@ -2,6 +2,8 @@ package Model;
 
 import java.util.ArrayList;
 
+import Model.Payment;
+
 public class PaymentList {
 	private ArrayList<Payment> list;
 	
