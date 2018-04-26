@@ -4,8 +4,8 @@ import Mediator.Database;
 
 public class Payment {
 	private int PaymentID;
-	// private Job JobID;
-	//private Employee employeeID;
+	// private Job job;
+	//private Employee employee;
 	private int GrossSalary;
 	private int HoursWorked;
 	private int NetSalary;
@@ -23,13 +23,6 @@ public class Payment {
 		this.PaymentID=PaymentID;
 	}
 
-	//public void setJobID(Job JobID){
-	// this.JobID = JobID
-    //}
-	
-	//public void set EmployeeID(Employee employeeID){
-	//this.employeeID = employeeID;
-	//}
 	
 	public void setGrossSalary(int GrossSalary) {
 		this.GrossSalary=GrossSalary;
@@ -52,10 +45,10 @@ public class Payment {
 	}
 	
 	// public Job getJobID(){
-	//return this.JobID;}
+	//return job.getJobID;}
 	
 	//public Employee getEmployeeID(){
-	//return this.employeeID;}
+	//return employee.getEmployeeID;}
 	
 	public int getGrossSalary() {
 		return this.GrossSalary;
