@@ -10,13 +10,17 @@ public class Payment {
 	private int HoursWorked;
 	private int NetSalary;
 	private int HolidayPay;
+	private int CompanyGain;
 	
-	public Payment(int PaymentID, int GrossSalary, int HoursWorked, int NetSalary, int HolidayPay) {
-		PaymentID= this.PaymentID;
-		GrossSalary = this.GrossSalary;
-		HoursWorked=this.HoursWorked;
-		NetSalary = this.NetSalary;
-		HolidayPay = this.HolidayPay;
+	
+
+	public Payment(int PaymentID, int GrossSalary, int HoursWorked, int NetSalary, int HolidayPay, int CompanyGain) {
+		this.PaymentID= PaymentID;
+		this.GrossSalary = GrossSalary;
+		this.HoursWorked=HoursWorked;
+		this.NetSalary = NetSalary;
+		this.HolidayPay = HolidayPay;
+		this.CompanyGain = CompanyGain;
 	}
 	
 	public void setPaymentID(int PaymentID) {
@@ -38,6 +42,10 @@ public class Payment {
 	
 	public void setHolidayPay(int HolidayPay) {
 		this.HolidayPay = HolidayPay;
+	}
+	
+	public void setCompanyGain(int CopmanyGain) {
+		this.CompanyGain= CompanyGain;
 	}
 	
 	public int getPaymentID() {
@@ -64,6 +72,10 @@ public class Payment {
 	
 	public int getHolidayPay() {
 		return this.HolidayPay;
+	}
+	
+	public int getCompanyGain() {
+		return this.CompanyGain;
 	}
 	}
 

@@ -1,6 +1,8 @@
 package Mediator;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import Model.Employee;
 import Model.Payment;
 import Model.PaymentList;
@@ -25,7 +27,7 @@ public class Database implements Persistence{
 
 	
 	
-	@Override
+
 	public synchronized void saveEmployee(Employee emp) {
 		String sql = "insert into" + " risetheorydb.employee" + " values('" + emp.getEmployeeID() + "'," + "'" + emp.getFirstName() + "'," + "'" + emp.getLastName() + "'," + "'" + emp.getAdress() + "'," + "'" + emp.getCPRnumber() + "'," + "'" + emp.getEmail() + "'," + "'" + emp.getPhoneNr() + "'," + "'" + emp.getDefoultTaxCard() + "'," + "'" + emp.getDOB() + "');"; 
 		try {
@@ -38,7 +40,7 @@ public class Database implements Persistence{
 	
 	@Override
 	public synchronized void savePayment(Payment paym) {
-		String sql = "insert into" + " risetheorydb.payment" + " values('" + paym.getPaymentID() + "'," + "'" + paym.getGrossSalary() + "'," + "'" + paym.getHoursWorked() + "'," + "'" + paym.getNetSalary() + "'," + "'" + paym.getHolidayPay() + "');"; 
+		String sql = "insert into" + " risetheorydb.payment" + " values('" + paym.getPaymentID() + "'," + "'" + paym.getGrossSalary() + "'," + "'" + paym.getHoursWorked() + "'," + "'" + paym.getNetSalary() + "'," + "'" + paym.getHolidayPay() + "'," + "'" + paym.getCompanyGain() + "');"; 
 		try {
 			db.update(sql);
 		} catch (SQLException e) {
@@ -84,6 +86,23 @@ public class Database implements Persistence{
 		{
 			saveProject(projList.getProject(i));
 		}
+	}
+	
+	@Override
+	public synchronized ArrayList load() {
+		String sql = "select * from risetheorydb.employee";
+		
+			ArrayList<Object[]> results = null;
+			try {
+				results = db.query(sql);
+				System.out.println(results);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		return results;
+		
 	}
 	
 	

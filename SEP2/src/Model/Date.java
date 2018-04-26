@@ -45,7 +45,7 @@ public class Date
    public String toString()
    {
       String all = "";
-      all = day + "/" + month + "/" + year;
+      all = year + "-" + month + "-" + day   ;
       return all;
    }
    

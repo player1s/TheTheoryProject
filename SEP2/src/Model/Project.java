@@ -30,6 +30,8 @@ public class Project {
 		this.endDate = endDate;
 	}
 	
+
+
 	public int getProjectID(){
 		return projectID;
 	}
@@ -47,7 +49,11 @@ public class Project {
 	}
 	
 	public boolean getIsSomeoneWorkingOn() {
-		return isCompleted;
+		return isSomeoneWorkingOn;
+	}
+	
+	public void setIsSomeoneWorkingOn(boolean isSomeoneWorkingOn) {
+		this.isSomeoneWorkingOn = isSomeoneWorkingOn;
 	}
 	
 	public int getCaseType() {

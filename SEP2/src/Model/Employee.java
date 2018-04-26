@@ -114,4 +114,11 @@ public class Employee {
 		return DOB;
 	}
 	
+	public String toString() {
+		String all= employeeID + " " + firstName + " " +  lastName + " " +  adress + " " +  CPRnumber + " " +  Email + " " +  phoneNr+ " " +  DefoultTaxCard+ " " +  DOB;
+		return all;
+		
+		
+	}
+	
 }
