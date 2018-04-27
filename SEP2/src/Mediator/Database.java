@@ -30,7 +30,16 @@ public class Database implements Persistence{
 		this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);
 	}
 
-	
+	public java.sql.Connection getConnection() {
+		java.sql.Connection con = null;
+		try {
+			con = DriverManager.getConnection(URL, USER, PASSWORD);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return con;
+	}
 	
 
 	public synchronized void saveEmployee(Employee emp) {
@@ -96,23 +105,64 @@ public class Database implements Persistence{
 	public ArrayList getAllEmployees()
 	{
 		ArrayList all = new ArrayList<Employee>();
-		Connection con = null;
+		java.sql.Connection con = getConnection();
 		try {
-			con = (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
 			java.sql.Statement stmt = con.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT EmployeeID, FirstName, LastName, Adress, CPRnumber, Email, PhoneNumber, DefaultTaxCard, DOB  FROM risetheorydb.employee");
+			ResultSet rs = stmt.executeQuery("SELECT EmployeeID, FirstName, LastName, Address, CPRnumber, Email, PhoneNumber, DefaultTaxCard, DOB  FROM risetheorydb.employee");
 		
 		while(rs.next())
 		{
-			Employee emp = new Employee(rs.getString("EmployeeID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("Adress"), rs.getString("CPRnumber"), rs.getString("Email"), rs.getString("PhoneNumber"), rs.getString("DefaultTaxCard"), (Date) rs.getObject("DOB"));
+			Date date = new Date(12,1,1995);// DEAL WITH THIS ONE
+			Employee emp = new Employee(rs.getString("EmployeeID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("Address"), rs.getString("CPRnumber"), rs.getString("Email"), rs.getString("PhoneNumber"), rs.getString("DefaultTaxCard"), date);
 			all.add(emp);
 		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}		
+		return all;
+	}
+	
+	public ArrayList getAllProjects() {
+		ArrayList all = new ArrayList<Project>();
+		java.sql.Connection con = getConnection();
+		try {
+			java.sql.Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT ProjectID, IsCompleted, IsSomeoneWorkingOn, caseType, deadline, paymentOfProject, milestone, nameOfContractor, site, winningProposal, startDate, endDate FROM risetheorydb.project");
+			
+			while(rs.next()) {
+				Date date1 = new Date(1,1,2000); // deadline
+				Date date2 = new Date(2,1,2000); // startDate
+				Date date3 = new Date(3,1,2000); // endDate
+				Project proj = new Project(rs.getInt("ProjectID"), rs.getBoolean("IsCompleted"), rs.getBoolean("IsSomeoneWorkingOn"), rs.getInt("caseType"), date1, rs.getInt("paymentOfProject"), rs.getInt("milestone"), rs.getString("nameOfContractor"), rs.getString("site"),rs.getString("winningProposal"), date2, date3);
+				all.add(proj);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return all;
+
+		
+	}
+	
+	public ArrayList getAllPayments()
+	{
+		ArrayList all = new ArrayList<Payment>();
+		java.sql.Connection con = getConnection();
+		try {
+			java.sql.Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT PaymentID, GrossSalary, HoursWorked, NetSalary, HolidayPay, CompanyGain  FROM risetheorydb.payment");
+		
+		while(rs.next())
+		{
+			Payment paym = new Payment(rs.getString("PaymentID"), rs.getInt("GrossSalary"), rs.getInt("HoursWorked"), rs.getInt("NetSalary"), rs.getInt("HolidayPay"), rs.getInt("CompanyGain"));
+			all.add(paym);
 		}
-		
-		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		return all;
 	}
 

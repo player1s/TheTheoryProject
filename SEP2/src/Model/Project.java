@@ -11,7 +11,7 @@ public class Project {
 	private int milestone; //??
 	private String nameOfContractor;
 	private String site; //??
-	private String winnigProposal; //??
+	private String winningProposal; //??
 	private Date startDate;
 	private Date endDate;
 	
@@ -25,7 +25,7 @@ public class Project {
 		this.milestone = milestone;
 		this.nameOfContractor = nameOfContractor;
 		this.site = site;
-		this.winnigProposal = winningProposal;
+		this.winningProposal = winningProposal;
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
@@ -105,11 +105,11 @@ public class Project {
 	}
 	
 	public String getWinningProposal() {
-		return winnigProposal;
+		return winningProposal;
 	}
 	
 	public void setWinningProposal(String winningProposal) {
-		this.winnigProposal = winningProposal;
+		this.winningProposal = winningProposal;
 	}
 	
 	
@@ -130,7 +130,7 @@ public class Project {
 	}
 	
 	public String toString() {
-		String all = projectID + " " + isCompleted + " " + isSomeoneWorkingOn + " " + caseType + " " + deadline + " " + paymentOfProject + " " + milestone + " " + nameOfContractor + " " + site + " " + winnigProposal + " " + startDate + " " + endDate; 
+		String all = projectID + " " + isCompleted + " " + isSomeoneWorkingOn + " " + caseType + " " + deadline + " " + paymentOfProject + " " + milestone + " " + nameOfContractor + " " + site + " " + winningProposal + " " + startDate + " " + endDate; 
 	    return all;
 	}
 		

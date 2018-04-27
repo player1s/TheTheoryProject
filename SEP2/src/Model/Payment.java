@@ -1,9 +1,9 @@
 package Model;
 
-import Mediator.Database;
+
 
 public class Payment {
-	private int PaymentID;
+	private String PaymentID;
 	// private Job job;
 	//private Employee employee;
 	private int GrossSalary;
@@ -14,7 +14,7 @@ public class Payment {
 	
 	
 
-	public Payment(int PaymentID, int GrossSalary, int HoursWorked, int NetSalary, int HolidayPay, int CompanyGain) {
+	public Payment(String PaymentID, int GrossSalary, int HoursWorked, int NetSalary, int HolidayPay, int CompanyGain) {
 		this.PaymentID= PaymentID;
 		this.GrossSalary = GrossSalary;
 		this.HoursWorked=HoursWorked;
@@ -23,7 +23,7 @@ public class Payment {
 		this.CompanyGain = CompanyGain;
 	}
 	
-	public void setPaymentID(int PaymentID) {
+	public void setPaymentID(String PaymentID) {
 		this.PaymentID=PaymentID;
 	}
 
@@ -48,7 +48,7 @@ public class Payment {
 		this.CompanyGain= CompanyGain;
 	}
 	
-	public int getPaymentID() {
+	public String getPaymentID() {
 		return this.PaymentID;
 	}
 	
