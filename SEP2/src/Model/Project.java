@@ -128,5 +128,10 @@ public class Project {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	
+	public String toString() {
+		String all = projectID + " " + isCompleted + " " + isSomeoneWorkingOn + " " + caseType + " " + deadline + " " + paymentOfProject + " " + milestone + " " + nameOfContractor + " " + site + " " + winningProposal + " " + startDate + " " + endDate; 
+	    return all;
+	}
 		
 }

@@ -77,6 +77,11 @@ public class Payment {
 	public int getCompanyGain() {
 		return this.CompanyGain;
 	}
+	
+	public String toString() {
+		String all = PaymentID + " " + GrossSalary + " " + HoursWorked + " " + NetSalary + " " + HolidayPay;
+		return all;
+	}
 	}
 
 
