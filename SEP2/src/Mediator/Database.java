@@ -1,8 +1,13 @@
 package Mediator;
 
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.jdbc.Connection;
+
+import Model.Date;
 import Model.Employee;
 import Model.Payment;
 import Model.PaymentList;
@@ -88,23 +93,31 @@ public class Database implements Persistence{
 		}
 	}
 	
-	@Override
-	public synchronized ArrayList load() {
-		String sql = "select * from risetheorydb.employee";
+	public ArrayList getAllEmployees()
+	{
+		ArrayList all = new ArrayList<Employee>();
+		Connection con = null;
+		try {
+			con = (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
+			java.sql.Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT EmployeeID, FirstName, LastName, Adress, CPRnumber, Email, PhoneNumber, DefaultTaxCard, DOB  FROM risetheorydb.employee");
 		
-			ArrayList<Object[]> results = null;
-			try {
-				results = db.query(sql);
-				System.out.println(results);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		while(rs.next())
+		{
+			Employee emp = new Employee(rs.getString("EmployeeID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("Adress"), rs.getString("CPRnumber"), rs.getString("Email"), rs.getString("PhoneNumber"), rs.getString("DefaultTaxCard"), (Date) rs.getObject("DOB"));
+			all.add(emp);
+		}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		return results;
 		
+		return all;
 	}
-	
+
+
+
 	
 
  

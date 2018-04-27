@@ -130,7 +130,7 @@ public class Project {
 	}
 	
 	public String toString() {
-		String all = projectID + " " + isCompleted + " " + isSomeoneWorkingOn + " " + caseType + " " + deadline + " " + paymentOfProject + " " + milestone + " " + nameOfContractor + " " + site + " " + winningProposal + " " + startDate + " " + endDate; 
+		String all = projectID + " " + isCompleted + " " + isSomeoneWorkingOn + " " + caseType + " " + deadline + " " + paymentOfProject + " " + milestone + " " + nameOfContractor + " " + site + " " + winnigProposal + " " + startDate + " " + endDate; 
 	    return all;
 	}
 		

@@ -16,8 +16,7 @@ public void saveProject(Project proj);
 public void saveEmployeeList(EmployeeList empList);
 public void savePaymentList(PaymentList paymList);
 public void saveProjectList(ProjectList projList);
-
-public  ArrayList load();
+public ArrayList getAllEmployees();
 
 
 
