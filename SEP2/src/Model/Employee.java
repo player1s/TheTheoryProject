@@ -10,7 +10,7 @@ public class Employee {
 	private String CPRnumber;
 	private String Email;
 	private String phoneNr;
-	private String DefoultTaxCard;
+	private String DefaultTaxCard;
 	private Date DOB;
 	
 	public Employee(String employeeID, String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard, Date dob)
@@ -22,7 +22,7 @@ public class Employee {
 		this.CPRnumber = CPRnumber;
 		this.Email = Email;
 		this.phoneNr = phoneNR;
-		this.DefoultTaxCard = DefoultTaxCard;
+		this.DefaultTaxCard = DefoultTaxCard;
 		this.DOB = dob;
 	}
 	
@@ -63,7 +63,7 @@ public class Employee {
 	
 	public void setDefoultTaxCard(String DefoultTaxCard)
 	{
-		this.DefoultTaxCard = DefoultTaxCard;
+		this.DefaultTaxCard = DefoultTaxCard;
 	}
 	
 	public void setDOB(Date dob)
@@ -108,7 +108,7 @@ public class Employee {
 	
 	public String getDefoultTaxCard()
 	{
-		return DefoultTaxCard;
+		return DefaultTaxCard;
 	}
 	
 	public Date getDOB()
@@ -117,7 +117,7 @@ public class Employee {
 	}
 	
 	public String toString() {
-		String all= employeeID + " " + firstName + " " +  lastName + " " +  adress + " " +  CPRnumber + " " +  Email + " " +  phoneNr+ " " +  DefoultTaxCard+ " " +  DOB;
+		String all= employeeID + " " + firstName + " " +  lastName + " " +  adress + " " +  CPRnumber + " " +  Email + " " +  phoneNr+ " " +  DefaultTaxCard+ " " +  DOB;
 		return all;
 		
 		
