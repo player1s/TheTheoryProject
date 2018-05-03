@@ -1,13 +1,14 @@
 package Model;
 
-public class Milestones {
-
+public class Milestone {
+	private String milestoneID;
 	private String description;
 	private int price;
 	private Date deadline;
 	
-	public Milestones(String description, int price, Date deadline)
+	public Milestone(String milestoneID, String description, int price, Date deadline)
 	{
+		this.milestoneID=milestoneID;
 		this.description=description;
 		this.price = price;
 		this.deadline = deadline;
@@ -15,6 +16,9 @@ public class Milestones {
 		
 	}
 	
+	public void setMilestoneID(String milestoneID){
+		this.milestoneID = milestoneID;
+	}
 	
 	public void setDescription(String description)
 	{
@@ -29,6 +33,10 @@ public class Milestones {
 	public void setDeadline(Date deadline)
 	{
 		this.deadline=deadline;
+	}
+	
+	public String getMilestoneID() {
+		return milestoneID;
 	}
 	
 	public String getDescription()

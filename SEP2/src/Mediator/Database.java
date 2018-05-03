@@ -24,7 +24,7 @@ public class Database implements Persistence{
 	private static final String DRIVER = "org.postgresql.Driver";
 	private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	private static final String USER = "postgres";
-	private static final String PASSWORD = "Zujevas10";
+	private static final String PASSWORD = "h";
 
 	public Database() throws ClassNotFoundException {
 		this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);
@@ -65,7 +65,7 @@ public class Database implements Persistence{
 	
 	@Override
 	public synchronized void saveProject(Project proj) {
-		String sql = "insert into" + " risetheorydb.project" + " values('" + proj.getProjectID() + "'," + "'" + proj.getIsCompleted() + "'," + "'" + proj.getIsSomeoneWorkingOn() + "'," + "'" + proj.getCaseType() + "'," + "'" + proj.getDeadLine() + "'," + "'" + proj.getPaymentOfProject() + "'," + "'" + proj.getMilestone() + "'," + "'" + proj.getNameOfContractor() + "'," + "'" + proj.getSite() + "'," + "'" + proj.getWinningProposal() + "'," + "'" + proj.getStartDate() + "'," + "'" + proj.getEndDate()+ "');"; 
+		String sql = "insert into" + " risetheorydb.project" + " values('" + proj.getProjectID() + "'," + "'" + proj.getIsCompleted() + "'," + "'" + proj.getIsSomeoneWorkingOn() + "'," + "'" + proj.getCaseType() + "'," + "'" + proj.getDeadLine() + "'," + "'" + proj.getPaymentOfProject() + "'," + "'" + proj.getNameOfContractor() + "'," + "'" + proj.getSite() + "'," + "'" + proj.getWinningProposal() + "'," + "'" + proj.getStartDate() + "'," + "'" + proj.getEndDate()+ "');"; 
 		try {
 			db.update(sql);
 		} catch (SQLException e) {
@@ -128,13 +128,13 @@ public class Database implements Persistence{
 		java.sql.Connection con = getConnection();
 		try {
 			java.sql.Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT ProjectID, IsCompleted, IsSomeoneWorkingOn, caseType, deadline, paymentOfProject, milestone, nameOfContractor, site, winningProposal, startDate, endDate FROM risetheorydb.project");
+			ResultSet rs = stmt.executeQuery("SELECT ProjectID, IsCompleted, IsSomeoneWorkingOn, caseType, deadline, paymentOfProject, nameOfContractor, site, winningProposal, startDate, endDate FROM risetheorydb.project");
 			
 			while(rs.next()) {
 				Date date1 = new Date(1,1,2000); // deadline
 				Date date2 = new Date(2,1,2000); // startDate
 				Date date3 = new Date(3,1,2000); // endDate
-				Project proj = new Project(rs.getInt("ProjectID"), rs.getBoolean("IsCompleted"), rs.getBoolean("IsSomeoneWorkingOn"), rs.getInt("caseType"), date1, rs.getInt("paymentOfProject"), rs.getInt("milestone"), rs.getString("nameOfContractor"), rs.getString("site"),rs.getString("winningProposal"), date2, date3);
+				Project proj = new Project(rs.getInt("ProjectID"), rs.getBoolean("IsCompleted"), rs.getBoolean("IsSomeoneWorkingOn"), rs.getInt("caseType"), date1, rs.getInt("paymentOfProject"), rs.getString("nameOfContractor"), rs.getString("site"),rs.getString("winningProposal"), date2, date3);
 				all.add(proj);
 			}
 		} catch (SQLException e) {
