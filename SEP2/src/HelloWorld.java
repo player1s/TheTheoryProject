@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import Mediator.Database;
 import Model.Date;
 import Model.Employee;
+import Model.Milestone;
 import Model.Payment;
 import Model.Project;
 
@@ -16,6 +17,7 @@ public class HelloWorld {
 	
 	//	Payment payment = new Payment("12", 2000, 20, 1800, 200, 10);
 		Project proj = new Project(1, false, false, 1, date, 10000, "swx", "B", "DUCHAS", date, date);
+		Milestone mil1 = new Milestone("sd","sfwfss",1,date);
 		
 		Database database = null;
 		try {
@@ -24,16 +26,19 @@ public class HelloWorld {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	//database.saveEmployee(emp);
+	
+database.saveMilestone(mil1);
+		//database.saveEmployee(emp);
 	//database.savePayment(payment);
 		//database.saveProject(proj);
 		//uhbuhn
 		ArrayList list = new ArrayList<>();
-		list = database.getAllProjects();
+		list = database.getAllMilestones();
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}
 		
+
 		
 
 		

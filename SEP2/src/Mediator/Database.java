@@ -25,7 +25,7 @@ public class Database implements Persistence{
 	private static final String DRIVER = "org.postgresql.Driver";
 	private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	private static final String USER = "postgres";
-	private static final String PASSWORD = "h";
+	private static final String PASSWORD = "Zujevas10";
 
 	public Database() throws ClassNotFoundException {
 		this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);
@@ -76,7 +76,7 @@ public class Database implements Persistence{
 	}
 	
 	public synchronized void saveMilestone(Milestone mil) {
-		String sql = "insert into" + " risetheorydb.milestone" + " values('" + mil.getMilestoneID()+ "');"; 
+		String sql = "insert into" + " risetheorydb.milestone" + " values('" + mil.getMilestoneID()+ "'," + "'" + mil.getDescription()+ "'," + "'" + mil.getPrice()+ "'," + "'" + mil.getDeadline() + "');"; 
 		try {
 			db.update(sql);
 		} catch (SQLException e) {

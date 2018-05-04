@@ -53,4 +53,9 @@ public class Milestone {
 	{
 		return this.deadline;
 	}
+	
+	public String toString() {
+		String all = this.milestoneID +" "+ this.description + " " + this.price + " " + this.deadline;
+		return all;
+	}
 }
