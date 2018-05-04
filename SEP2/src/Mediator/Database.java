@@ -14,7 +14,8 @@ import Model.PaymentList;
 import Model.Project;
 import Model.ProjectList;
 import Model.EmployeeList;
-
+import Model.Milestone;
+import Model.MilestoneList;
 import utility.persistence.MyDatabase;
 
 public class Database implements Persistence{
@@ -74,6 +75,16 @@ public class Database implements Persistence{
 		}
 	}
 	
+	public synchronized void saveMilestone(Milestone mil) {
+		String sql = "insert into" + " risetheorydb.milestone" + " values('" + mil.getMilestoneID()+ "');"; 
+		try {
+			db.update(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 
 	@Override
 	public synchronized void saveEmployeeList(EmployeeList empList)
@@ -99,6 +110,15 @@ public class Database implements Persistence{
 		for(int i = 0; i < projList.getNumberOfProject(); i++)
 		{
 			saveProject(projList.getProject(i));
+		}
+	}
+	
+	@Override
+	public synchronized void saveMilestoneList(MilestoneList milList)
+	{
+		for(int i = 0; i < milList.getNumberOfMilestones(); i++)
+		{
+			saveMilestone(milList.getMilestone(i));
 		}
 	}
 	
@@ -158,6 +178,27 @@ public class Database implements Persistence{
 		{
 			Payment paym = new Payment(rs.getString("PaymentID"), rs.getInt("GrossSalary"), rs.getInt("HoursWorked"), rs.getInt("NetSalary"), rs.getInt("HolidayPay"), rs.getInt("CompanyGain"));
 			all.add(paym);
+		}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return all;
+	}
+	
+	public ArrayList getAllMilestones()
+	{
+		ArrayList all = new ArrayList<Milestone>();
+		java.sql.Connection con = getConnection();
+		try {
+			java.sql.Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT MilestoneID, Description , Price , MilestoneDeadline FROM risetheorydb.milestone");
+		
+		while(rs.next())
+		{
+			Date date = new Date(12,1,1995);// DEAL WITH THIS ONE
+			Milestone mil = new Milestone(rs.getString("MilestoneID"), rs.getString("Description"), rs.getInt("Price"), date);
+			all.add(mil);
 		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
