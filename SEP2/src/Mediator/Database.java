@@ -25,7 +25,7 @@ public class Database implements Persistence{
 	private static final String DRIVER = "org.postgresql.Driver";
 	private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	private static final String USER = "postgres";
-	private static final String PASSWORD = "Zujevas10";
+	private static final String PASSWORD = "lukaso";
 
 	public Database() throws ClassNotFoundException {
 		this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);

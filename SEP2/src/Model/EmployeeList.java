@@ -10,9 +10,19 @@ public class EmployeeList {
 		this.list = new ArrayList<>();
 	}
 	
-	public void addEmployee(Employee emp)
+	public void addEmployee(Employee emp) throws Exception
 	{
-		list.add(emp);
+		 for (int i = 0; i < list.size(); i++) {
+				if (list.get(i).getCPRnumber().equals(emp.getCPRnumber())) {
+					throw new Exception("Employee is already in");
+				}
+			}
+		if (emp.getEmployeeID().equals("") || emp.getFirstName().equals("") || emp.getLastName().equals("") || emp.getCPRnumber().equals("") || emp.getEmail().equals("")) {
+			throw new Exception("Employee can't be added");
+		}
+		else list.add(emp);
+		
+		
 	}
 	
 	public int getNumberOfEmployees()
@@ -32,4 +42,5 @@ public class EmployeeList {
 		}
 		return all;
 	}
+	
 }
