@@ -6,7 +6,7 @@ public class Payment {
 	private String PaymentID;
 	// private Job job;
 	//private Employee employee;
-	private int GrossSalary;
+	private Integer GrossSalary;
 	private int HoursWorked;
 	private int NetSalary;
 	private int HolidayPay;
@@ -14,7 +14,7 @@ public class Payment {
 	
 	
 
-	public Payment(String PaymentID, int GrossSalary, int HoursWorked, int NetSalary, int HolidayPay, int CompanyGain) {
+	public Payment(String PaymentID, Integer GrossSalary, int HoursWorked, int NetSalary, int HolidayPay, int CompanyGain) {
 		this.PaymentID= PaymentID;
 		this.GrossSalary = GrossSalary;
 		this.HoursWorked=HoursWorked;
@@ -28,7 +28,7 @@ public class Payment {
 	}
 
 	
-	public void setGrossSalary(int GrossSalary) {
+	public void setGrossSalary(Integer GrossSalary) {
 		this.GrossSalary=GrossSalary;
 	}
 
@@ -58,7 +58,7 @@ public class Payment {
 	//public Employee getEmployeeID(){
 	//return employee.getEmployeeID;}
 	
-	public int getGrossSalary() {
+	public Integer getGrossSalary() {
 		return this.GrossSalary;
 	}
 	
