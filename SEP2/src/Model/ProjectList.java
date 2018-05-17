@@ -12,12 +12,12 @@ public class ProjectList {
 	public void addProjet(Project proj) throws Exception
 	{
 		 for (int i = 0; i < list.size(); i++) {
-				if (list.get(i).getProjectID() == proj.getProjectID()) {
-					throw new Exception("Employee is already in");
+				if (list.get(i).getDeadLine().equals(proj.getDeadLine()) && list.get(i).getWinningProposal().equals(proj.getWinningProposal()) && list.get(i).getPaymentOfProject() == proj.getPaymentOfProject())  {
+					throw new Exception("Project is already in");
 				}
 			}
-		if (proj.getProjectID() == 0 || proj.getDeadLine().equals("") || proj.getNameOfContractor().equals("") || proj.getWinningProposal().equals("")) {
-			throw new Exception("Employee can't be added");
+		if (proj.getDeadLine().equals("") || proj.getNameOfContractor().equals("") || proj.getWinningProposal().equals("")) {
+			throw new Exception("Project can't be added");
 		}
 		else list.add(proj);
 		
