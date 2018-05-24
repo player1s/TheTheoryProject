@@ -133,7 +133,8 @@ public class Database implements Persistence{
 		while(rs.next())
 		{
 			Date date = new Date(12,1,1995);// DEAL WITH THIS ONE
-			Employee emp = new Employee(rs.getInt("EmployeeID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("Address"), rs.getString("CPRnumber"), rs.getString("Email"), rs.getString("PhoneNumber"), rs.getString("DefaultTaxCard"), date);
+			Employee emp = new Employee(rs.getString("FirstName"), rs.getString("LastName"), rs.getString("Address"), rs.getString("CPRnumber"), rs.getString("Email"), rs.getString("PhoneNumber"), rs.getString("DefaultTaxCard"), date);
+			emp.setEmployeeID(rs.getInt("EmployeeID"));
 			all.add(emp);
 		}
 		} catch (SQLException e) {
@@ -159,7 +160,7 @@ public class Database implements Persistence{
 				
 				for (int i = 0; i < employees.size(); i++) {
 					if(employees.get(i).getEmployeeID() == rs.getInt("EmployeeID")) {
-						Employee emp = new Employee(employees.get(i).getEmployeeID(), employees.get(i).getFirstName(), employees.get(i).getLastName(), employees.get(i).getAdress(), employees.get(i).getCPRnumber(), employees.get(i).getEmail(), employees.get(i).getPhoneNr(), employees.get(i).getDefoultTaxCard(), employees.get(i).getDOB());
+						Employee emp = new Employee(employees.get(i).getFirstName(), employees.get(i).getLastName(), employees.get(i).getAdress(), employees.get(i).getCPRnumber(), employees.get(i).getEmail(), employees.get(i).getPhoneNr(), employees.get(i).getDefoultTaxCard(), employees.get(i).getDOB());
 						Project proj = new Project(rs.getInt("ProjectID"),rs.getString("name"), rs.getBoolean("IsCompleted"), rs.getBoolean("IsSomeoneWorkingOn"), rs.getInt("caseType"), date1, rs.getInt("paymentOfProject"), rs.getString("nameOfContractor"), rs.getString("website"),rs.getString("winningProposal"), date2, date3,emp);
 						all.add(proj);
 					}
@@ -198,7 +199,7 @@ public class Database implements Persistence{
 			for (int i = 0; i < employees.size(); i++) {
 				for (int j = 0; j < projects.size(); j++) {
 					if(employees.get(i).getEmployeeID() == rs.getInt("EmployeeID") && projects.get(j).getProjectID() == rs.getInt("ProjectID")) {
-						Employee emp = new Employee(employees.get(i).getEmployeeID(), employees.get(i).getFirstName(), employees.get(i).getLastName(), employees.get(i).getAdress(), employees.get(i).getCPRnumber(), employees.get(i).getEmail(), employees.get(i).getPhoneNr(), employees.get(i).getDefoultTaxCard(), employees.get(i).getDOB()); 
+						Employee emp = new Employee(employees.get(i).getFirstName(), employees.get(i).getLastName(), employees.get(i).getAdress(), employees.get(i).getCPRnumber(), employees.get(i).getEmail(), employees.get(i).getPhoneNr(), employees.get(i).getDefoultTaxCard(), employees.get(i).getDOB()); 
 						Project proj = new Project(projects.get(j).getProjectID(),projects.get(j).getName(), projects.get(j).getIsCompleted(), projects.get(j).getIsSomeoneWorkingOn(), projects.get(j).getCaseType(),date1, projects.get(j).getPaymentOfProject(), projects.get(j).getNameOfContractor(), projects.get(j).getWebsite(), projects.get(j).getWinningProposal(), date2, date3, emp); 
 						Payment paym = new Payment(rs.getInt("PaymentID"), rs.getInt("GrossSalary"), rs.getInt("HoursWorked"), rs.getInt("NetSalary"), rs.getInt("HolidayPay"), rs.getInt("CompanyGain"), proj,emp);
 						all.add(paym);

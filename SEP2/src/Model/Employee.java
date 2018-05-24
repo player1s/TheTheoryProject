@@ -13,9 +13,9 @@ public class Employee {
 	private String DefaultTaxCard;
 	private Date DOB;
 	
-	public Employee(Integer employeeID, String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard, Date dob)
+	public Employee(String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard, Date dob)
 	{
-		this.employeeID = employeeID;
+		this.employeeID = 0;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.adress = adress;

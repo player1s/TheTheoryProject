@@ -141,9 +141,7 @@ public class Project {
 		return employee.getEmployeeID();
 	}
 	
-	public void setEmployeeID(Integer employeeID) {
-		this.employee.setEmployeeID(employeeID);
-	}
+
 
 	public String toString() {
 		String all = projectID + " " + name + " " + isCompleted + " " + isSomeoneWorkingOn + " " + caseType + " "

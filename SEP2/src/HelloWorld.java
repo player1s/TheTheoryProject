@@ -16,11 +16,29 @@ public class HelloWorld {
 	{
 		// Employee
 		Date date = new Date(01,01,2010);
-		Employee emp = new Employee(12,"lukas", "STRONL", "GAIDZIU10", "12311", "lukasass@gmail.com", "+458488484", "LOl", date);
+		Employee emp = new Employee("lukas", "STRONL", "GAIDZIU10", "12311", "lukasass@gmail.com", "+458488484", "LOl", date);
+		EmployeeList emplist = new EmployeeList();
+		try {
+			emplist.addEmployee(emp);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		
 		Project proj = new Project(2,"name", false, false, 1, date, 10000, "swx", "B", "winningP", date, date, emp);
+		ProjectList projlist = new ProjectList();
+		try {
+			projlist.addProjet(proj);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
 		Payment payment = new Payment(13, 2000, 20, 1800, 200, 10, proj, emp);
+		
+		
 
 		Database database = null;
 		try {
@@ -29,14 +47,17 @@ public class HelloWorld {
 			e.printStackTrace();
 		}
 		
-				
+	//	database.saveEmployeeList(emplist);		
+		database.saveProjectList(projlist);		
+	//	database.saveEmployeeList(emplist);		
+		
        //database.saveMilestone(mil1);
 		//database.saveEmployee(emp);
 	//database.savePayment(payment);
 	//	database.saveProject(proj);
 		
 		ArrayList list = new ArrayList<>();
-		list = database.getAllPayments();
+		list = database.getAllEmployees();
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}

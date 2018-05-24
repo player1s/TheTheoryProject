@@ -58,17 +58,11 @@ public class Payment {
 		return project.getProjectID();
 	}
 	 
-	public void setProjectID(int projectID) {
-		this.project.setProjectID(projectID);
-	}
 	
 	public int getEmployeeID(){
 		return employee.getEmployeeID();
 	}
 	
-	public void setEmployeeID(int employeeID) {
-		this.employee.setEmployeeID(employeeID);
-	}
 	
 	public Integer getGrossSalary() {
 		return this.GrossSalary;
