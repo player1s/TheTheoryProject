@@ -66,7 +66,7 @@ public class Database implements Persistence{
 	
 	@Override
 	public synchronized void saveProject(Project proj) {
-		String sql = "insert into" + " risetheorydb.project" + " values('" + proj.getProjectID() + "'," + "'" + proj.getIsCompleted() + "'," + "'" + proj.getIsSomeoneWorkingOn() + "'," + "'" + proj.getCaseType() + "'," + "'" + proj.getDeadLine() + "'," + "'" + proj.getPaymentOfProject() + "'," + "'" + proj.getNameOfContractor() + "'," + "'" + proj.getSite() + "'," + "'" + proj.getWinningProposal() + "'," + "'" + proj.getStartDate() + "'," + "'" + proj.getEndDate()+ "');"; 
+		String sql = "insert into" + " risetheorydb.project" + " values('" + proj.getProjectID() + "'," + "'" + proj.getName() + "'," + "'" + proj.getIsCompleted() + "'," + "'" + proj.getIsSomeoneWorkingOn() + "'," + "'" + proj.getCaseType() + "'," + "'" + proj.getDeadLine() + "'," + "'" + proj.getPaymentOfProject() + "'," + "'" + proj.getNameOfContractor() + "'," + "'" + proj.getWebsite() + "'," + "'" + proj.getWinningProposal() + "'," + "'" + proj.getStartDate() + "'," + "'" + proj.getEndDate()+ "'," + "'" + proj.getEmployeeID() + "');"; 
 		try {
 			db.update(sql);
 		} catch (SQLException e) {
@@ -133,7 +133,7 @@ public class Database implements Persistence{
 		while(rs.next())
 		{
 			Date date = new Date(12,1,1995);// DEAL WITH THIS ONE
-			Employee emp = new Employee(rs.getString("EmployeeID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("Address"), rs.getString("CPRnumber"), rs.getString("Email"), rs.getString("PhoneNumber"), rs.getString("DefaultTaxCard"), date);
+			Employee emp = new Employee(rs.getInt("EmployeeID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("Address"), rs.getString("CPRnumber"), rs.getString("Email"), rs.getString("PhoneNumber"), rs.getString("DefaultTaxCard"), date);
 			all.add(emp);
 		}
 		} catch (SQLException e) {
@@ -148,14 +148,25 @@ public class Database implements Persistence{
 		java.sql.Connection con = getConnection();
 		try {
 			java.sql.Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT ProjectID, IsCompleted, IsSomeoneWorkingOn, caseType, deadline, paymentOfProject, nameOfContractor, site, winningProposal, startDate, endDate FROM risetheorydb.project");
+			ResultSet rs = stmt.executeQuery("SELECT ProjectID, name, IsCompleted, IsSomeoneWorkingOn, caseType, deadline, paymentOfProject, nameOfContractor, website, winningProposal, startDate, endDate, EmployeeID FROM risetheorydb.project");
 			
 			while(rs.next()) {
 				Date date1 = new Date(1,1,2000); // deadline
 				Date date2 = new Date(2,1,2000); // startDate
 				Date date3 = new Date(3,1,2000); // endDate
-				Project proj = new Project(rs.getInt("ProjectID"), rs.getBoolean("IsCompleted"), rs.getBoolean("IsSomeoneWorkingOn"), rs.getInt("caseType"), date1, rs.getInt("paymentOfProject"), rs.getString("nameOfContractor"), rs.getString("site"),rs.getString("winningProposal"), date2, date3);
-				all.add(proj);
+				ArrayList<Employee> employees = new ArrayList<Employee>();
+				employees = getAllEmployees();
+				
+				for (int i = 0; i < employees.size(); i++) {
+					if(employees.get(i).getEmployeeID() == rs.getInt("EmployeeID")) {
+						Employee emp = new Employee(employees.get(i).getEmployeeID(), employees.get(i).getFirstName(), employees.get(i).getLastName(), employees.get(i).getAdress(), employees.get(i).getCPRnumber(), employees.get(i).getEmail(), employees.get(i).getPhoneNr(), employees.get(i).getDefoultTaxCard(), employees.get(i).getDOB());
+						Project proj = new Project(rs.getInt("ProjectID"),rs.getString("name"), rs.getBoolean("IsCompleted"), rs.getBoolean("IsSomeoneWorkingOn"), rs.getInt("caseType"), date1, rs.getInt("paymentOfProject"), rs.getString("nameOfContractor"), rs.getString("website"),rs.getString("winningProposal"), date2, date3,emp);
+						all.add(proj);
+					}
+					 
+				}
+			
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -176,7 +187,7 @@ public class Database implements Persistence{
 		
 		while(rs.next())
 		{
-			Payment paym = new Payment(rs.getString("PaymentID"), rs.getInt("GrossSalary"), rs.getInt("HoursWorked"), rs.getInt("NetSalary"), rs.getInt("HolidayPay"), rs.getInt("CompanyGain"));
+			Payment paym = new Payment(rs.getInt("PaymentID"), rs.getInt("GrossSalary"), rs.getInt("HoursWorked"), rs.getInt("NetSalary"), rs.getInt("HolidayPay"), rs.getInt("CompanyGain"));
 			all.add(paym);
 		}
 		} catch (SQLException e) {

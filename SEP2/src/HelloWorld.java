@@ -9,63 +9,37 @@ import Model.Milestone;
 import Model.Payment;
 import Model.PaymentList;
 import Model.Project;
+import Model.ProjectList;
 
 public class HelloWorld {
 	public static void main(String[] args)
 	{
 		// Employee
 		Date date = new Date(01,01,2010);
-		Employee emp = new Employee("12","lukas", "STRONL", "GAIDZIU10", "12311", "lukasass@gmail.com", "+458488484", "LOl", date);
-		Employee emp1 = new Employee("12","lukas", "STRONL", "GAIDZIU10", "12311", "lukasass@gmail.com", "+458488484", "LOl", date);
+		Employee emp = new Employee(12,"lukas", "STRONL", "GAIDZIU10", "12311", "lukasass@gmail.com", "+458488484", "LOl", date);
 
-	Payment payment = new Payment("12", 2000, 20, 1800, 200, 10);
-	Payment payment1 = new Payment("12", null, 20, 1800, 200, 10);
-		Project proj = new Project(1, false, false, 1, date, 10000, "swx", "B", "DUCHAS", date, date);
-		Milestone mil1 = new Milestone("sd","sfwfss",1,date);
-	/*	
+		Payment payment = new Payment(12, 2000, 20, 1800, 200, 10);
+		Project proj = new Project(2,"name", false, false, 1, date, 10000, "swx", "B", "winningP", date, date, emp);
+		
+
 		Database database = null;
 		try {
 			database = new Database();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
-		/* EmployeeList list = new EmployeeList();
-		try {
-			list.addEmployee(emp);
-			list.addEmployee(emp1);
-		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		for (int i = 0; i < list.getNumberOfEmployees(); i++) {
-			System.out.println(list.getEmployee(i));
-		}
 		
-*/		
-		
-		PaymentList Plist = new PaymentList();
-		try {
-			Plist.addPayment(payment);
-			Plist.addPayment(payment1);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		for (int i = 0; i < Plist.getNumberOfPayments(); i++) {
-			System.out.println(Plist.getPayment(i));
-		}
-		
-		
+				
        //database.saveMilestone(mil1);
 		//database.saveEmployee(emp);
 	//database.savePayment(payment);
 		//database.saveProject(proj);
 		
-		/*ArrayList list = new ArrayList<>();
-		list = database.getAllEmployees();
+		ArrayList list = new ArrayList<>();
+		list = database.getAllProjects();
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
-		}*/
+		}
 		
 		
 

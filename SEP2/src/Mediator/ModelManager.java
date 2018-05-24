@@ -25,18 +25,33 @@ public class ModelManager implements SysModel{
 
 	@Override
 	public void addEmployee(Employee emp) {
-		empList.addEmployee(emp);
+		try {
+			empList.addEmployee(emp);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public void addProject(Project proj) {
-		projList.addProjet(proj);
+		try {
+			projList.addProjet(proj);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void addPayment(Payment paym) {
-		paymList.addPayment(paym);
+		try {
+			paymList.addPayment(paym);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override

@@ -3,7 +3,7 @@ package Model;
 
 
 public class Payment {
-	private String PaymentID;
+	private int PaymentID;
 	// private Job job;
 	//private Employee employee;
 	private Integer GrossSalary;
@@ -14,7 +14,7 @@ public class Payment {
 	
 	
 
-	public Payment(String PaymentID, Integer GrossSalary, int HoursWorked, int NetSalary, int HolidayPay, int CompanyGain) {
+	public Payment(int PaymentID, Integer GrossSalary, int HoursWorked, int NetSalary, int HolidayPay, int CompanyGain) {
 		this.PaymentID= PaymentID;
 		this.GrossSalary = GrossSalary;
 		this.HoursWorked=HoursWorked;
@@ -23,7 +23,7 @@ public class Payment {
 		this.CompanyGain = CompanyGain;
 	}
 	
-	public void setPaymentID(String PaymentID) {
+	public void setPaymentID(int PaymentID) {
 		this.PaymentID=PaymentID;
 	}
 
@@ -48,7 +48,7 @@ public class Payment {
 		this.CompanyGain= CompanyGain;
 	}
 	
-	public String getPaymentID() {
+	public int getPaymentID() {
 		return this.PaymentID;
 	}
 	

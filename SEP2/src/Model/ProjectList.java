@@ -16,7 +16,7 @@ public class ProjectList {
 					throw new Exception("Project is already in");
 				}
 			}
-		if (proj.getDeadLine().equals("") || proj.getNameOfContractor().equals("") || proj.getWinningProposal().equals("")) {
+		if (proj.getName().equals("") || proj.getDeadLine().equals("") || proj.getNameOfContractor().equals("") || proj.getWinningProposal().equals("")) {
 			throw new Exception("Project can't be added");
 		}
 		else list.add(proj);

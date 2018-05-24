@@ -3,7 +3,7 @@ package Model;
 
 
 public class Employee {
-	private String employeeID;
+	private Integer employeeID;
 	private String firstName;
 	private String lastName;
 	private String adress;
@@ -13,7 +13,7 @@ public class Employee {
 	private String DefaultTaxCard;
 	private Date DOB;
 	
-	public Employee(String employeeID, String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard, Date dob)
+	public Employee(Integer employeeID, String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard, Date dob)
 	{
 		this.employeeID = employeeID;
 		this.firstName = firstName;
@@ -26,7 +26,7 @@ public class Employee {
 		this.DOB = dob;
 	}
 	
-	public void setEmployeeId(String employeeID)
+	public void setEmployeeID(Integer employeeID)
 	{
 		this.employeeID = employeeID;
 	}
@@ -71,7 +71,7 @@ public class Employee {
 		this.DOB = dob;
 	}
 	
-	public String getEmployeeID()
+	public Integer getEmployeeID()
 	{
 		return employeeID;
 	}

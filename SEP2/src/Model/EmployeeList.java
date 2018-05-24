@@ -17,7 +17,7 @@ public class EmployeeList {
 					throw new Exception("Employee is already in");
 				}
 			}
-		if (emp.getEmployeeID().equals("") || emp.getFirstName().equals("") || emp.getLastName().equals("") || emp.getCPRnumber().equals("") || emp.getEmail().equals("")) {
+		if (emp.getEmployeeID() == null || emp.getFirstName().equals("") || emp.getLastName().equals("") || emp.getCPRnumber().equals("") || emp.getEmail().equals("")) {
 			throw new Exception("Employee can't be added");
 		}
 		else list.add(emp);
