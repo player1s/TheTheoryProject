@@ -4,8 +4,8 @@ package Model;
 
 public class Payment {
 	private int PaymentID;
-	// private Job job;
-	//private Employee employee;
+	private Project project;
+	private Employee employee;
 	private Integer GrossSalary;
 	private int HoursWorked;
 	private int NetSalary;
@@ -14,13 +14,15 @@ public class Payment {
 	
 	
 
-	public Payment(int PaymentID, Integer GrossSalary, int HoursWorked, int NetSalary, int HolidayPay, int CompanyGain) {
+	public Payment(int PaymentID, Integer GrossSalary, int HoursWorked, int NetSalary, int HolidayPay, int CompanyGain, Project project, Employee employee) {
 		this.PaymentID= PaymentID;
 		this.GrossSalary = GrossSalary;
 		this.HoursWorked=HoursWorked;
 		this.NetSalary = NetSalary;
 		this.HolidayPay = HolidayPay;
 		this.CompanyGain = CompanyGain;
+		this.project = project;
+		this.employee = employee;
 	}
 	
 	public void setPaymentID(int PaymentID) {
@@ -52,11 +54,21 @@ public class Payment {
 		return this.PaymentID;
 	}
 	
-	// public Job getJobID(){
-	//return job.getJobID;}
+	public int getProjectID(){
+		return project.getProjectID();
+	}
+	 
+	public void setProjectID(int projectID) {
+		this.project.setProjectID(projectID);
+	}
 	
-	//public Employee getEmployeeID(){
-	//return employee.getEmployeeID;}
+	public int getEmployeeID(){
+		return employee.getEmployeeID();
+	}
+	
+	public void setEmployeeID(int employeeID) {
+		this.employee.setEmployeeID(employeeID);
+	}
 	
 	public Integer getGrossSalary() {
 		return this.GrossSalary;
@@ -79,7 +91,7 @@ public class Payment {
 	}
 	
 	public String toString() {
-		String all = PaymentID + " " + GrossSalary + " " + HoursWorked + " " + NetSalary + " " + HolidayPay;
+		String all = PaymentID + " " + GrossSalary + " " + HoursWorked + " " + NetSalary + " " + HolidayPay + " " + CompanyGain + " " + project.getProjectID() + " " + employee.getEmployeeID() ;
 		return all;
 	}
 	}

@@ -18,9 +18,9 @@ public class HelloWorld {
 		Date date = new Date(01,01,2010);
 		Employee emp = new Employee(12,"lukas", "STRONL", "GAIDZIU10", "12311", "lukasass@gmail.com", "+458488484", "LOl", date);
 
-		Payment payment = new Payment(12, 2000, 20, 1800, 200, 10);
-		Project proj = new Project(2,"name", false, false, 1, date, 10000, "swx", "B", "winningP", date, date, emp);
 		
+		Project proj = new Project(2,"name", false, false, 1, date, 10000, "swx", "B", "winningP", date, date, emp);
+		Payment payment = new Payment(13, 2000, 20, 1800, 200, 10, proj, emp);
 
 		Database database = null;
 		try {
@@ -33,10 +33,10 @@ public class HelloWorld {
        //database.saveMilestone(mil1);
 		//database.saveEmployee(emp);
 	//database.savePayment(payment);
-		//database.saveProject(proj);
+	//	database.saveProject(proj);
 		
 		ArrayList list = new ArrayList<>();
-		list = database.getAllProjects();
+		list = database.getAllPayments();
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}

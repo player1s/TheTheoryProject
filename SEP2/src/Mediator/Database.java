@@ -55,7 +55,7 @@ public class Database implements Persistence{
 	
 	@Override
 	public synchronized void savePayment(Payment paym) {
-		String sql = "insert into" + " risetheorydb.payment" + " values('" + paym.getPaymentID() + "'," + "'" + paym.getGrossSalary() + "'," + "'" + paym.getHoursWorked() + "'," + "'" + paym.getNetSalary() + "'," + "'" + paym.getHolidayPay() + "'," + "'" + paym.getCompanyGain() + "');"; 
+		String sql = "insert into" + " risetheorydb.payment" + " values('" + paym.getPaymentID() + "'," + "'" + paym.getGrossSalary() + "'," + "'" + paym.getHoursWorked() + "'," + "'" + paym.getNetSalary() + "'," + "'" + paym.getHolidayPay() + "'," + "'" + paym.getCompanyGain() + "'," + "'" + paym.getProjectID() + "'," + "'" + paym.getEmployeeID() + "');"; 
 		try {
 			db.update(sql);
 		} catch (SQLException e) {
@@ -183,12 +183,30 @@ public class Database implements Persistence{
 		java.sql.Connection con = getConnection();
 		try {
 			java.sql.Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT PaymentID, GrossSalary, HoursWorked, NetSalary, HolidayPay, CompanyGain  FROM risetheorydb.payment");
+			ResultSet rs = stmt.executeQuery("SELECT PaymentID, GrossSalary, HoursWorked, NetSalary, HolidayPay, CompanyGain, ProjectID, EmployeeID  FROM risetheorydb.payment");
 		
 		while(rs.next())
 		{
-			Payment paym = new Payment(rs.getInt("PaymentID"), rs.getInt("GrossSalary"), rs.getInt("HoursWorked"), rs.getInt("NetSalary"), rs.getInt("HolidayPay"), rs.getInt("CompanyGain"));
-			all.add(paym);
+			ArrayList<Employee> employees = new ArrayList<Employee>();
+			employees = getAllEmployees();
+			ArrayList<Project> projects = new ArrayList<Project>();
+			projects = getAllProjects();
+			Date date1 = new Date(1,1,2000); // deadline
+			Date date2 = new Date(2,1,2000); // startDate
+			Date date3 = new Date(3,1,2000); // endDate
+			
+			for (int i = 0; i < employees.size(); i++) {
+				for (int j = 0; j < projects.size(); j++) {
+					if(employees.get(i).getEmployeeID() == rs.getInt("EmployeeID") && projects.get(j).getProjectID() == rs.getInt("ProjectID")) {
+						Employee emp = new Employee(employees.get(i).getEmployeeID(), employees.get(i).getFirstName(), employees.get(i).getLastName(), employees.get(i).getAdress(), employees.get(i).getCPRnumber(), employees.get(i).getEmail(), employees.get(i).getPhoneNr(), employees.get(i).getDefoultTaxCard(), employees.get(i).getDOB()); 
+						Project proj = new Project(projects.get(j).getProjectID(),projects.get(j).getName(), projects.get(j).getIsCompleted(), projects.get(j).getIsSomeoneWorkingOn(), projects.get(j).getCaseType(),date1, projects.get(j).getPaymentOfProject(), projects.get(j).getNameOfContractor(), projects.get(j).getWebsite(), projects.get(j).getWinningProposal(), date2, date3, emp); 
+						Payment paym = new Payment(rs.getInt("PaymentID"), rs.getInt("GrossSalary"), rs.getInt("HoursWorked"), rs.getInt("NetSalary"), rs.getInt("HolidayPay"), rs.getInt("CompanyGain"), proj,emp);
+						all.add(paym);
+					}
+				
+				}
+			}
+			
 		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
