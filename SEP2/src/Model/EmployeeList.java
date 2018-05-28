@@ -2,13 +2,21 @@ package Model;
 
 import java.util.ArrayList;
 
+
+
 public class EmployeeList {
 	private ArrayList<Employee> list;
 
-	public EmployeeList() {
-		this.list = new ArrayList<>();
-	}
+	
 
+	public EmployeeList() {
+		this.list = new ArrayList<Employee>();
+		
+	}
+	
+	public void setEmployeeList(ArrayList list) {
+		this.list = list;
+	}
 	public void addEmployee(Employee emp) throws Exception {
 
 		loop: while (true) {
@@ -32,11 +40,11 @@ public class EmployeeList {
 				if (emp.getEmployeeID() == null || emp.getFirstName().equals("") || emp.getLastName().equals("")
 						|| emp.getCPRnumber().equals("") || emp.getEmail().equals("")) {
 					throw new Exception("Employee can't be added");
-				} else {
-					System.out.println(ID);
+				} else 
+					
 					
 					list.add(emp);
-				}
+				
 				break loop;
 			}
 
@@ -51,5 +59,19 @@ public class EmployeeList {
 	public Employee getEmployee(int index) {
 		return list.get(index);
 	}
+
+	public int size() {
+		return list.size();
+	}
+	
+	public Employee getEmployeeByID(int ID){
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i).getEmployeeID() == ID) {
+				return list.get(i);
+			}
+		}
+		return null;
+	}
+	
 
 }

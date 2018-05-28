@@ -14,8 +14,8 @@ public class Payment {
 	
 	
 
-	public Payment(int PaymentID, Integer GrossSalary, int HoursWorked, int NetSalary, int HolidayPay, int CompanyGain, Project project, Employee employee) {
-		this.PaymentID= PaymentID;
+	public Payment(Integer GrossSalary, int HoursWorked, int NetSalary, int HolidayPay, int CompanyGain, Project project, Employee employee) {
+		this.PaymentID= 0;
 		this.GrossSalary = GrossSalary;
 		this.HoursWorked=HoursWorked;
 		this.NetSalary = NetSalary;

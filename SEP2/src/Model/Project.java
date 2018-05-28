@@ -15,10 +15,10 @@ public class Project {
 	private Date startDate;
 	private Date endDate;
 
-	public Project(int projectID, String name, boolean isCompleted, boolean isSomeoneWorkingOn, int caseType,
+	public Project(String name, boolean isCompleted, boolean isSomeoneWorkingOn, int caseType,
 			Date deadline, int paymentOfProject, String nameOfContractor, String website, String winningProposal,
 			Date startDate, Date endDate, Employee employee) {
-		this.projectID = projectID;
+		this.projectID = 0;
 		this.name = name;
 		this.isCompleted = isCompleted;
 		this.isSomeoneWorkingOn = isSomeoneWorkingOn;
@@ -139,6 +139,11 @@ public class Project {
 
 	public Integer getEmployeeID() {
 		return employee.getEmployeeID();
+	}
+	
+	public void setEmployeeID(int ID)
+	{
+		employee.setEmployeeID(ID);
 	}
 	
 
