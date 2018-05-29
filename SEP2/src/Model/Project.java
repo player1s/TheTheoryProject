@@ -1,24 +1,26 @@
 package Model;
 
+import java.sql.Date;
+
 public class Project {
-	private Employee employee;
-	private int projectID;
+	private Integer employeeID;
+	private Integer projectID;
 	private String name;
 	private boolean isCompleted;
 	private boolean isSomeoneWorkingOn;
-	private int caseType; // are you sure??
+	private Integer caseType;
 	private Date deadline;
-	private int paymentOfProject;
+	private Integer paymentOfProject;
 	private String nameOfContractor;
-	private String website; // ??
-	private String winningProposal; // ??
+	private String website;
+	private String winningProposal;
 	private Date startDate;
 	private Date endDate;
 
-	public Project(String name, boolean isCompleted, boolean isSomeoneWorkingOn, int caseType,
-			Date deadline, int paymentOfProject, String nameOfContractor, String website, String winningProposal,
-			Date startDate, Date endDate, Employee employee) {
-		this.projectID = 0;
+	public Project(Integer projectID,  boolean isCompleted, boolean isSomeoneWorkingOn, Integer caseType,
+			Date deadline, Integer paymentOfProject, String nameOfContractor, String winningProposal,
+			Date startDate, Date endDate, String name, String website, Integer emp) {
+		this.projectID = projectID;
 		this.name = name;
 		this.isCompleted = isCompleted;
 		this.isSomeoneWorkingOn = isSomeoneWorkingOn;
@@ -30,14 +32,14 @@ public class Project {
 		this.winningProposal = winningProposal;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.employee = employee;
+		this.employeeID = emp;
 	}
 
-	public int getProjectID() {
+	public Integer getProjectID() {
 		return projectID;
 	}
 
-	public void setProjectID(int projectID) {
+	public void setProjectID(Integer projectID) {
 		this.projectID = projectID;
 	}
 
@@ -65,11 +67,11 @@ public class Project {
 		this.isSomeoneWorkingOn = isSomeoneWorkingOn;
 	}
 
-	public int getCaseType() {
+	public Integer getCaseType() {
 		return caseType;
 	}
 
-	public void setCaseType(int caseType) {
+	public void setCaseType(Integer caseType) {
 		this.caseType = caseType;
 	}
 
@@ -81,11 +83,11 @@ public class Project {
 		this.deadline = deadline;
 	}
 
-	public int getPaymentOfProject() {
+	public Integer getPaymentOfProject() {
 		return paymentOfProject;
 	}
 
-	public void setPaymentOfProject(int paymentOfProject) {
+	public void setPaymentOfProject(Integer paymentOfProject) {
 		this.paymentOfProject = paymentOfProject;
 	}
 
@@ -129,29 +131,22 @@ public class Project {
 		this.endDate = endDate;
 	}
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
-	public Employee getEmployee() {
-		return employee;
+	public void setEmployee(Integer employee) {
+		this.employeeID = employee;
 	}
 
 	public Integer getEmployeeID() {
-		return employee.getEmployeeID();
+		return employeeID;
 	}
-	
-	public void setEmployeeID(int ID)
-	{
-		employee.setEmployeeID(ID);
-	}
-	
 
+	public void setEmployeeID(Integer employeeID) {
+		this.employeeID = employeeID;
+	}
 
 	public String toString() {
 		String all = projectID + " " + name + " " + isCompleted + " " + isSomeoneWorkingOn + " " + caseType + " "
 				+ deadline + " " + paymentOfProject + " " + nameOfContractor + " " + website + " " + winningProposal
-				+ " " + startDate + " " + endDate + " " + employee.getEmployeeID() ;
+				+ " " + startDate + " " + endDate + " " + employeeID;
 		return all;
 	}
 

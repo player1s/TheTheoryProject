@@ -11,11 +11,11 @@ public class Employee {
 	private String Email;
 	private String phoneNr;
 	private String DefaultTaxCard;
-	private Date DOB;
+	private java.sql.Date DOB;
 	
-	public Employee(String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard, Date dob)
+	public Employee(Integer employeeID, String firstName, String lastName, String adress, String CPRnumber, String Email, String phoneNR, String DefoultTaxCard, java.sql.Date date)
 	{
-		this.employeeID = 0;
+		this.employeeID = employeeID;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.adress = adress;
@@ -23,7 +23,7 @@ public class Employee {
 		this.Email = Email;
 		this.phoneNr = phoneNR;
 		this.DefaultTaxCard = DefoultTaxCard;
-		this.DOB = dob;
+		this.DOB = date;
 	}
 	
 	public void setEmployeeID(Integer employeeID)
@@ -66,7 +66,7 @@ public class Employee {
 		this.DefaultTaxCard = DefoultTaxCard;
 	}
 	
-	public void setDOB(Date dob)
+	public void setDOB(java.sql.Date dob)
 	{
 		this.DOB = dob;
 	}
@@ -111,7 +111,7 @@ public class Employee {
 		return DefaultTaxCard;
 	}
 	
-	public Date getDOB()
+	public java.sql.Date getDOB()
 	{
 		return DOB;
 	}

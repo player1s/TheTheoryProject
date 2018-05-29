@@ -14,7 +14,7 @@ public class EmployeeList {
 		
 	}
 	
-	public void setEmployeeList(ArrayList list) {
+	public void setEmployeeList(ArrayList<Employee> list) {
 		this.list = list;
 	}
 	public void addEmployee(Employee emp) throws Exception {

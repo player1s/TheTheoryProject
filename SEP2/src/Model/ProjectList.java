@@ -9,7 +9,7 @@ public class ProjectList {
 		this.list = new ArrayList<Project>();
 	}
 	
-	public void setProjectList(ArrayList list) {
+	public void setProjectList(ArrayList<Project> list) {
 		this.list = list;
 	}
 	

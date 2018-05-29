@@ -9,9 +9,9 @@ public class Date
    
    public Date(int day, int month, int year)
    {
-      this.day = day;
-      this.month = month;
-      this.year = year;
+      this.day = day-1899;
+      this.month = month-12;
+      this.year = year-31;
    }
    
    public void set(int day, int month, int year)
