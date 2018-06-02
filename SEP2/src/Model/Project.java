@@ -1,4 +1,4 @@
-package Model;
+ package Model;
 
 import java.sql.Date;
 
@@ -17,9 +17,9 @@ public class Project {
 	private Date startDate;
 	private Date endDate;
 
-	public Project(Integer projectID,  boolean isCompleted, boolean isSomeoneWorkingOn, Integer caseType,
+	public Project( boolean isCompleted, boolean isSomeoneWorkingOn, Integer caseType,
 			Date deadline, Integer paymentOfProject, String nameOfContractor, String winningProposal,
-			Date startDate, Date endDate, String name, String website, Integer emp) {
+			Date startDate, Date endDate, String name, String website, Integer emp, Integer projectID) {
 		this.projectID = projectID;
 		this.name = name;
 		this.isCompleted = isCompleted;

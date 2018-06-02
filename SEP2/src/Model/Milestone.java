@@ -1,22 +1,29 @@
 package Model;
 
+import java.sql.Date;
+
 public class Milestone {
-	private String milestoneID;
+	private Integer milestoneID;
 	private String description;
-	private int price;
+	private Integer price;
 	private Date deadline;
+	private Integer EmployeeID;
+	private Integer ProjectID;
 	
-	public Milestone(String milestoneID, String description, int price, Date deadline)
+	
+	public Milestone( String description, Integer price, Date deadline, Integer milestoneID, Integer EmployeeID, Integer ProjectID)
 	{
 		this.milestoneID=milestoneID;
 		this.description=description;
 		this.price = price;
 		this.deadline = deadline;
+		this.EmployeeID=EmployeeID;
+		this.ProjectID=ProjectID;
 				
 		
 	}
 	
-	public void setMilestoneID(String milestoneID){
+	public void setMilestoneID(Integer milestoneID){
 		this.milestoneID = milestoneID;
 	}
 	
@@ -35,7 +42,15 @@ public class Milestone {
 		this.deadline=deadline;
 	}
 	
-	public String getMilestoneID() {
+	public void setEmployeeID(Integer EmployeeID){
+		this.EmployeeID = EmployeeID;
+	}
+	
+	public void setProjectID(Integer ProjectID){
+		this.ProjectID = ProjectID;
+	}
+	
+	public Integer getMilestoneID() {
 		return milestoneID;
 	}
 	
@@ -44,7 +59,7 @@ public class Milestone {
 		return this.description;
 	}
 	
-	public int getPrice()
+	public Integer getPrice()
 	{
 		return this.price;
 	}
@@ -52,6 +67,14 @@ public class Milestone {
 	public Date getDeadline()
 	{
 		return this.deadline;
+	}
+	
+	public Integer getEmployeeID() {
+		return EmployeeID;
+	}
+	
+	public Integer getProjectID() {
+		return ProjectID;
 	}
 	
 	public String toString() {

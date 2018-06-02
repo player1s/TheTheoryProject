@@ -3,6 +3,7 @@ package Model;
 
 public class Payment {
 	private Integer PaymentID;
+	private Integer MilestoneID;
 	private Integer ProjectID;
 	private Integer EmployeeID;
 	private Integer GrossSalary;
@@ -11,7 +12,8 @@ public class Payment {
 	private Integer HolidayPay;
 	private Integer CompanyGain;
 
-	public Payment(Integer PaymentID, Integer GrossSalary, Integer HoursWorked, Integer NetSalary, Integer HolidayPay, Integer CompanyGain,
+
+	public Payment(Integer MilestoneID, Integer PaymentID, Integer GrossSalary, Integer HoursWorked, Integer NetSalary, Integer HolidayPay, Integer CompanyGain,
 			Integer EmployeeID, Integer ProjectID) {
 		this.PaymentID = PaymentID;
 		this.GrossSalary = GrossSalary;
@@ -21,14 +23,7 @@ public class Payment {
 		this.CompanyGain = CompanyGain;
 		this.ProjectID = ProjectID;
 		this.EmployeeID = EmployeeID;
-	}
-
-	public void setProject(Integer projectid) {
-		this.ProjectID = projectid;
-	}
-
-	public void setEmployee(Integer employeeid) {
-		this.EmployeeID = employeeid;
+		this.MilestoneID = MilestoneID;
 	}
 
 	public void setPaymentID(Integer PaymentID) {
@@ -62,18 +57,15 @@ public class Payment {
 	public void setProjectID(Integer ProjectID) {
 		 this.ProjectID=ProjectID;
 	}
+	
+	public void setMilestoneID(Integer MilestoneID) {
+		 this.MilestoneID=MilestoneID;
+	}
 
 	public Integer getPaymentID() {
 		return this.PaymentID;
 	}
 
-	public Integer getProject() {
-		return ProjectID;
-	}
-
-	public Integer getEmployee() {
-		return EmployeeID;
-	}
 
 	public Integer getGrossSalary() {
 		return this.GrossSalary;
@@ -101,6 +93,10 @@ public class Payment {
 	
 	public Integer getProjectID() {
 		return this.ProjectID;
+	}
+	
+	public Integer getMilestoneID() {
+		return this.MilestoneID;
 	}
 
 	public String toString() {
