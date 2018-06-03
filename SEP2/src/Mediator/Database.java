@@ -43,17 +43,20 @@ public class Database implements Persistence {
 
 		int counter;
 		int id = 1;
-		ArrayList<Integer> allempid = new ArrayList<Integer>();
+		ArrayList<Employee> allempid = new ArrayList<Employee>();
 		java.sql.Connection con = null;
 		con = getConnection();
-		// getting data to check if id is unique start
 		try {
 			java.sql.Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT EmployeeID FROM risetheorydb.employee");
+			ResultSet rs = stmt.executeQuery(
+					"SELECT EmployeeID, FirstName, LastName, Address, CPRnumber, Email, PhoneNumber, DefaultTaxCard, DOB  FROM risetheorydb.employee");
 
 			while (rs.next()) {
 
-				Integer tempemp = rs.getInt("EmployeeID");
+				Employee tempemp = new Employee(rs.getInt("EmployeeID"), rs.getString("FirstName"),
+						rs.getString("LastName"), rs.getString("Address"), rs.getString("CPRnumber"),
+						rs.getString("Email"), rs.getString("PhoneNumber"), rs.getString("DefaultTaxCard"),
+						rs.getDate("DOB"));
 				allempid.add(tempemp);
 
 			}
@@ -62,12 +65,21 @@ public class Database implements Persistence {
 			e.printStackTrace();
 		}
 		// getting data to check if id is unique end
+		// checking if unique data is equal start
+		for (int i = 0; i < allempid.size(); i++) {
+			if (allempid.get(i).getCPRnumber().equals(emp.getCPRnumber())) {
+				throw new Exception(
+						"CPR number matches with an existing Employee's CPR number. maybe you tried to add an existing employee? ");
+
+			}
+		}
+		// checking if unique data is equal end
 		// check if id is unique start
 		while (true) {
 			emp.setEmployeeID(id);
 			counter = 0;
-			for (int i = 0; i < allempid.size(); i++) {
-				if (allempid.get(i) == emp.getEmployeeID()) {
+			for (int i1 = 0; i1 < allempid.size(); i1++) {
+				if (allempid.get(i1).getEmployeeID() == emp.getEmployeeID()) {
 					counter++;
 				}
 			}
@@ -186,6 +198,42 @@ public class Database implements Persistence {
 			e.printStackTrace();
 		}
 		// getting data to check if id is unique end
+		// check for key data uniqueness start
+		ArrayList<Project> allproj = new ArrayList<Project>();
+		 con = null;
+		con = getConnection();
+		try {
+			java.sql.Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(
+					"SELECT ProjectID, name, IsCompleted, IsSomeoneWorkingOn, caseType, deadline, paymentOfProject, nameOfContractor, website, winningProposal, startDate, endDate, EmployeeID FROM risetheorydb.project");
+
+			while (rs.next()) {
+
+			
+			
+						Project tempproj = new Project(rs.getBoolean("IsCompleted"), rs.getBoolean("IsSomeoneWorkingOn"),
+								rs.getInt("caseType"), rs.getDate("deadline"), rs.getInt("paymentOfProject"),
+								rs.getString("nameOfContractor"), rs.getString("winningProposal"),
+								rs.getDate("startDate"), rs.getDate("endDate"), rs.getString("name"),
+								rs.getString("website"), rs.getInt("employeeID"), rs.getInt("ProjectID"));
+						allproj.add(tempproj);
+					}
+
+				
+
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for (int i = 0; i < allproj.size(); i++) {
+			if(allproj.get(i).getName().equals(proj.getName())&& allproj.get(i).getDeadLine().equals(proj.getDeadLine())&& allproj.get(i).getWinningProposal().equals(proj.getWinningProposal())&& allproj.get(i).getPaymentOfProject() == proj.getPaymentOfProject() )
+			{
+				throw new Exception("this project has same name, deadline, winningproposal, payment. Are you trying to add a project that is already added?");	
+			}
+		}
+		// check for key data uniqueness start
 		// check if id is unique start
 		while (true) {
 			proj.setProjectID(id);
@@ -215,7 +263,8 @@ public class Database implements Persistence {
 				+ proj.getIsSomeoneWorkingOn() + "'," + "'" + proj.getCaseType() + "'," + "'" + proj.getDeadLine()
 				+ "'," + "'" + proj.getPaymentOfProject() + "'," + "'" + proj.getNameOfContractor() + "'," + "'"
 				+ proj.getWinningProposal() + "'," + "'" + proj.getStartDate() + "'," + "'" + proj.getEndDate() + "',"
-				+ "'" + proj.getName() + "'," + "'" + proj.getWebsite() + "'," + "'" + proj.getEmployeeID() + "'," + "'" +  proj.getProjectID() + "');";
+				+ "'" + proj.getName() + "'," + "'" + proj.getWebsite() + "'," + "'" + proj.getEmployeeID() + "'," + "'"
+				+ proj.getProjectID() + "');";
 		try {
 			db.update(sql);
 			System.out.println("added: " + proj);

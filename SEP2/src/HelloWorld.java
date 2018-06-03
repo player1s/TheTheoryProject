@@ -51,16 +51,16 @@ public class HelloWorld {
 		
 	
 		// Project Start----------------------------------------------------------------------------------------------- tested 0206
-		/*
+		
 			// Add Project Start++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			java.sql.Date deadline = new java.sql.Date(0,0,0);
 			java.sql.Date startDate = new java.sql.Date(0,0,0);
 			java.sql.Date endDate = new java.sql.Date(0,0,0);	// we got a feature here that java.sql.Date counts from 1899.12.31
-			Employee emp = modelManager.getEmployeeById(771);
-			Project proj = new Project(true, false, 1,deadline, 4584, "MrNIIIICE", "boi, I want this job", startDate, endDate, "Ablazer", "awesomeFreelanceSite", emp.getEmployeeID(), null);
+			Employee emp = modelManager.getEmployeeById(3);
+			Project proj = new Project(true, false, 1,deadline, 4584, "MrNIIIICE", "boi, I want this job", startDate, endDate, "Ablazer2", "awesomeFreelanceSite", emp.getEmployeeID(), null);
 			database.saveProject(proj);
 			// Add Project End++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		*/
+		
 		
 			// ListAll Project Start***************************************************************************************************
 		//	modelManager.getAllProjects();
