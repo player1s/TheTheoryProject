@@ -160,14 +160,68 @@ public class Database implements Persistence {
 
 	@Override
 	public PaymentList getAllPaymentsFromDatabase() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ArrayList<Payment> all = new ArrayList<Payment>();
+		java.sql.Connection con = null;
+		try {
+			con = getConnection();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			java.sql.Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(
+					"SELECT * FROM risetheorydb.payment");
+
+			while (rs.next()) {
+				Payment paym = new Payment(rs.getInt("MilestoneID"), rs.getInt("PaymentID"), rs.getInt("GrossSalary"), rs.getInt("HoursWorked"),
+						rs.getInt("NetSalary"), rs.getInt("HolidayPay"), rs.getInt("CompanyGain"),
+						 rs.getInt("employeeid"), rs.getInt("projectid"));
+				all.add(paym);
+				System.out.println("returned: "+paym.getPaymentID());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return all;
+		
 	}
 
 	@Override
 	public ProjectList getAllProjectsFromDatabase() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Project> all = new ArrayList<Project>();
+		java.sql.Connection con = null;
+		con = getConnection();
+		try {
+			java.sql.Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(
+					"SELECT ProjectID, name, IsCompleted, IsSomeoneWorkingOn, caseType, deadline, paymentOfProject, nameOfContractor, website, winningProposal, startDate, endDate, EmployeeID FROM risetheorydb.project");
+
+			while (rs.next()) {
+
+	
+
+
+						Project proj = new Project(rs.getBoolean("IsCompleted"),
+								rs.getBoolean("IsSomeoneWorkingOn"), rs.getInt("caseType"), rs.getDate("deadline"),
+								rs.getInt("paymentOfProject"), rs.getString("nameOfContractor"),
+								rs.getString("winningProposal"), rs.getDate("startDate"), rs.getDate("endDate"),
+								rs.getString("name"), rs.getString("website"), rs.getInt("employeeID"), rs.getInt("ProjectID"));
+						all.add(proj);
+						System.out.println("returned these: "+proj.getProjectID());
+					}
+
+				
+
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ProjectList projlist = new ProjectList(all);
+		return projlist;
 	}
 
 	@Override
