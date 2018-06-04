@@ -163,12 +163,7 @@ public class Database implements Persistence {
 		
 		ArrayList<Payment> all = new ArrayList<Payment>();
 		java.sql.Connection con = null;
-		try {
-			con = getConnection();
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		con = getConnection();
 		try {
 			java.sql.Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(
@@ -179,13 +174,14 @@ public class Database implements Persistence {
 						rs.getInt("NetSalary"), rs.getInt("HolidayPay"), rs.getInt("CompanyGain"),
 						 rs.getInt("employeeid"), rs.getInt("projectid"));
 				all.add(paym);
-				System.out.println("returned: "+paym.getPaymentID());
+				System.out.println(paym.getPaymentID()+" is in the arraylist");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return all;
+		PaymentList paymlist = new PaymentList(all);
+		return paymlist;
 		
 	}
 
@@ -226,8 +222,28 @@ public class Database implements Persistence {
 
 	@Override
 	public MilestoneList getAllMilestonesFromDatabase() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Milestone> all = new ArrayList<Milestone>();
+		java.sql.Connection con = null;
+		con = getConnection();
+		try {
+			java.sql.Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(
+					"SELECT Description , Price , MilestoneDeadline, MilestoneID, employeeID, projectID FROM risetheorydb.milestone");
+
+			while (rs.next()) {
+
+				Milestone mil = new Milestone(rs.getString("Description"), rs.getInt("Price"),
+						rs.getDate("MilestoneDeadline"), rs.getInt("MilestoneID"),
+						rs.getInt("employeeid"),  rs.getInt("projectid"));
+				all.add(mil);
+				System.out.println("returned: "+mil.getMilestoneID());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MilestoneList millist = new MilestoneList(all);
+		return millist;
 	}
 
 	
